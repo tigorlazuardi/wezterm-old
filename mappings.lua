@@ -1,0 +1,57 @@
+local wezterm = require('wezterm')
+
+---create key with ctrl+shift modifier
+---@param key string
+---@param action table
+---@return table
+local function controlShift(key, action)
+	return {
+		key = key,
+		mods = 'CTRL|SHIFT',
+		action = action,
+	}
+end
+
+local function controlAlt(key, action)
+	return {
+		key = key,
+		mods = 'CTRL|ALT',
+		action = action,
+	}
+end
+
+local function control(key, action)
+	return {
+		key = key,
+		mods = 'CTRL',
+		action = action,
+	}
+end
+
+local function shift(key, action)
+	return {
+		key = key,
+		mods = 'SHIFT',
+		action = action,
+	}
+end
+
+local function leader(key, action)
+	return {
+		key = key,
+		mods = 'LEADER',
+		action = action,
+	}
+end
+
+return {
+	shift('Insert', wezterm.action({ PasteFrom = 'PrimarySelection' })),
+	control('Insert', wezterm.action({ CopyTo = 'PrimarySelection' })),
+	controlShift('v', wezterm.action({ PasteFrom = 'Clipboard' })),
+	controlShift('c', wezterm.action({ CopyTo = 'Clipboard' })),
+	leader('w', wezterm.action({ CloseCurrentPane = { confirm = true } })),
+	controlShift('=', 'IncreaseFontSize'),
+	controlShift('-', 'DecreaseFontSize'),
+	leader('[', wezterm.action({ SplitVertical = { domain = 'CurrentPaneDomain' } })),
+	leader(']', wezterm.action({ SplitHorizontal = { domain = 'CurrentPaneDomain' } })),
+}
