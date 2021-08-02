@@ -20,7 +20,7 @@ return {
 		format = '$0',
 	},
 	{ -- file:line format
-		regex = [[\b^~?/|(/[\w_-]+)+(?::\d+)?\b]],
+		regex = [[\b^~?/|(/\.?[\w_-]+)+(?::\d+)?\b]],
 		format = '$0',
 	},
 }
