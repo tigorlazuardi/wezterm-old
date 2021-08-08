@@ -4,7 +4,7 @@ local wezterm = require('wezterm')
 ---@param key string
 ---@param action table
 ---@return table
-local function controlShift(key, action)
+local function control_shift(key, action)
 	return {
 		key = key,
 		mods = 'CTRL|SHIFT',
@@ -12,7 +12,7 @@ local function controlShift(key, action)
 	}
 end
 
-local function controlAlt(key, action)
+local function control_alt(key, action)
 	return {
 		key = key,
 		mods = 'CTRL|ALT',
@@ -47,8 +47,8 @@ end
 return {
 	shift('Insert', wezterm.action({ PasteFrom = 'PrimarySelection' })),
 	control('Insert', wezterm.action({ CopyTo = 'PrimarySelection' })),
-	controlShift('v', wezterm.action({ PasteFrom = 'Clipboard' })),
-	controlShift('c', wezterm.action({ CopyTo = 'Clipboard' })),
+	control_shift('v', wezterm.action({ PasteFrom = 'Clipboard' })),
+	control_shift('c', wezterm.action({ CopyTo = 'Clipboard' })),
 	leader('w', wezterm.action({ CloseCurrentPane = { confirm = false } })),
 	control('+', 'IncreaseFontSize'),
 	control('_', 'DecreaseFontSize'),
